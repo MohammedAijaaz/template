@@ -53,7 +53,8 @@ export default class Home extends Component {
     return (
       <div>
         <AppBar
-          title="Title"
+          title="Products"
+          style={{ position: "fixed" }}
           onLeftIconButtonTouchTap={this.props.handleToggle}
           iconElementRight={
             this.state.logged ? (

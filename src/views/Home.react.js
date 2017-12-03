@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ProductStore from "../stores/ProductStore";
 import { observer } from "mobx-react";
+import Product from "../components/Product.react";
 
 const style = {
   padding: "1%"
@@ -12,10 +13,23 @@ class Home extends Component {
     super(context);
   }
 
+  displayProducts = () => {
+    return ProductStore.products_list.map(product => {
+      return (
+        <div className="col">
+          <Product product={product} history={this.props.history} />
+        </div>
+      );
+    });
+  };
+
   render() {
     return (
-      <div style={style}>
-        <h3>Hello world, welcome to Home!</h3>
+      <div className="container-fluid">
+        <br />
+        <div style={{ marginTop: "3em" }}>
+          <div className="row">{this.displayProducts()}</div>
+        </div>
       </div>
     );
   }
